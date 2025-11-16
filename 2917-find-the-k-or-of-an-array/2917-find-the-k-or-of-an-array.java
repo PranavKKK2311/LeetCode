@@ -1,0 +1,22 @@
+class Solution {
+    public int findKOr(int[] nums, int k) {
+        int[] bitCount = new int[31];
+        
+        for (int num : nums) {
+            for (int i = 0; i < 31; i++) {
+                if ((num & (1 << i)) != 0) {
+                    bitCount[i]++;
+                }
+            }
+        }
+        
+        int result = 0;
+        for (int i = 0; i < 31; i++) {
+            if (bitCount[i] >= k) {
+                result |= (1 << i);
+            }
+        }
+        
+        return result;
+    }
+}
